@@ -1,12 +1,14 @@
-# lab01
+# lab05
   
-this assignment will be on Python variables, functions, and control (if statements, and/or, loops, etc.)
+this assignment will be on Object Oriented Programming (OOP), string representation, and inheritance
   
-this assignment merges problems from lab01, disc01, and hw01 into one; refer to these links for problem descriptions and requirements:
+this assignment merges problems from disc05, disc06, lab04, lab05, and hw04 into one; refer to these links for problem descriptions and requirements:
   
-- lab01: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab01/
-- disc01: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc01/
-- hw01: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw01/
+- disc05: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc05/
+- disc06: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc05/
+- lab04: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab04/
+- lab05: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab05/
+- hw04: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw04/
   
 lecture slides: 
   
