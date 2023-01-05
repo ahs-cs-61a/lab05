@@ -1,6 +1,6 @@
 # lab05
   
-this assignment will be on Object Oriented Programming (OOP), string representation, and inheritance
+this assignment will be on Object Oriented Programming (OOP) and inheritance
   
 this assignment merges problems from disc05, disc06, lab04, lab05, and hw04 into one; refer to these links for problem descriptions and requirements:
   
