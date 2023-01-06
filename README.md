@@ -1,8 +1,6 @@
-# lab05
+# lab05: Object Oriented Programming (OOP), Inheritance
   
-this assignment will be on Object Oriented Programming (OOP) and inheritance
-  
-this assignment merges problems from disc05, disc06, lab04, lab05, and hw04 into one; refer to these links for problem descriptions and requirements:
+This assignment merges problems from disc05, disc06, lab04, lab05, and hw04 into one; refer to these links for problem descriptions and requirements:
   
 - disc05: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc05/
 - disc06: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc05/
