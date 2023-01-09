@@ -1,4 +1,4 @@
-# lab01: OOP, inheritance
+# lab05: OOP, inheritance
 
 from operator import add, sub
 

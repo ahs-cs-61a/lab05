@@ -1,4 +1,4 @@
-# lab01 tests
+# lab05 tests
 
 import labs.lab01 as lab
 from io import StringIO 

@@ -1,11 +1,13 @@
 # lab05 WWPD?
 
+
 # IMPORTS
 
 import inspect
 import tests.wwpd_storage as s
 
 st = s.wwpd_storage 
+
 
 # COLORED PRINTS - custom text type to terminal: https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal, ANSI colors: http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
 
@@ -92,6 +94,8 @@ def wwpd(name, question_set, stored_list):
 
 # REFERENCE CLASSES & METHODS
 
+# https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc05/
+
 class Student:
 
     extension_days = 3 # this is a class variable
@@ -122,6 +126,39 @@ class Professor:
         student.extension_days = days
 
 
+# https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab04/
+
+class Car:
+    num_wheels = 4
+    gas = 30
+    headlights = 2
+    size = 'Tiny'
+
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+        self.color = 'No color yet. You need to paint me.'
+        self.wheels = Car.num_wheels
+        self.gas = Car.gas
+
+    def paint(self, color):
+        self.color = color
+        return self.make + ' ' + self.model + ' is now ' + color
+
+    def drive(self):
+        if self.wheels < Car.num_wheels or self.gas <= 0:
+            return 'Cannot drive!'
+        self.gas -= 10
+        return self.make + ' ' + self.model + ' goes vroom!'
+
+    def pop_tire(self):
+        if self.wheels > 0:
+            self.wheels -= 1
+
+    def fill_gas(self):
+        self.gas += 20
+        return 'Gas level: ' + str(self.gas)
+
 
 # QUESTION SET - ELEMENT FORMAT: [<INITIAL PRINTS> (usually empty), <QUESTION>, <ANSWER>]
 # INSPECT MODULE - convert function body into String: https://docs.python.org/3/library/inspect.html 
@@ -141,8 +178,26 @@ student_oop_qs = [
 student_oop_qs = [[i + 1] + student_oop_qs[i] + [False] for i in range(len(student_oop_qs))]
 
 
+classy_cars_qs = [
+    [">>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "Model S"],
+    ["deneros_car.gas = 10", ">>> deneros_car.drive()", "'Tesla Model S goes vroom!'"],
+    ["", ">>> deneros_car.drive()", "'Cannot drive!'"],
+    ["", ">>> deneros_car.fill_gas()", "'Gas level: 20'"]
+    ["", "Car.gas", "30"],
+    [">>> deneros_car = Car('Tesla', 'Model S')\n>>> deneros_car.wheels = 2", "deneros_car.wheels", "2"],
+    ["", "Car.num_wheels", "4"],
+    ["", "deneros_car.drive()", "'Cannot drive!'"],
+    ["", "Car.drive()", "error"],
+    ["", "Car.drive(deneros_car)", "'Cannot drive!'"]
+]
+classy_cars_qs = [[i + 1] + classy_cars_qs[i] + [False] for i in range(len(classy_cars_qs))]
+
+
 # WWPD? QUESTIONS
 
 def wwpd_student_oop():
     wwpd("Student OOP", student_oop_qs, st)
+
+def wwpd_classy_cars():
+    wwpd("Classy Cars", classy_cars_qs)
 
