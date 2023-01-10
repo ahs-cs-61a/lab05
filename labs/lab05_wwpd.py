@@ -167,28 +167,28 @@ student_oop_qs = [
     ['>>> callahan = Professor("Callahan")', '>>> elle = Student("Elle", callahan)', "Added Elle"],
     ["", ">>> elle.visit_office_hours(callahan)", "Thanks, Callahan"],
     ["", '>>> elle.visit_office_hours(Professor("Paulette"))', "Thanks, Paulette"],
-    ["", ">>> elle.understand", "2"],
+    ["", ">>> elle.understanding", "2"],
     ["", ">>> [name for name in callahan.students]", "['Elle']"],
     ["", 'x = Student("Vivian", Professor("Stromwell")).name', "Added Vivian"],
     ["", ">>> x", "'Vivian'"],
     ["", ">>> elle.extension_days", "3"],
-    ["callahan.grant_more_extension_days(elle, 7)", ">>> elle.extension_days", "7"],
-    ["", "Student.extension_days", "3"]
+    [">>> callahan.grant_more_extension_days(elle, 7)", ">>> elle.extension_days", "7"],
+    ["", ">>> Student.extension_days", "3"]
     ]
 student_oop_qs = [[i + 1] + student_oop_qs[i] + [False] for i in range(len(student_oop_qs))]
 
 
 classy_cars_qs = [
-    [">>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "Model S"],
-    ["deneros_car.gas = 10", ">>> deneros_car.drive()", "'Tesla Model S goes vroom!'"],
+    [inspect.getsource(Car) + "\n\n>>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "'Model S'"],
+    [">>> deneros_car.gas = 10", ">>> deneros_car.drive()", "'Tesla Model S goes vroom!'"],
     ["", ">>> deneros_car.drive()", "'Cannot drive!'"],
-    ["", ">>> deneros_car.fill_gas()", "'Gas level: 20'"]
-    ["", "Car.gas", "30"],
-    [">>> deneros_car = Car('Tesla', 'Model S')\n>>> deneros_car.wheels = 2", "deneros_car.wheels", "2"],
-    ["", "Car.num_wheels", "4"],
-    ["", "deneros_car.drive()", "'Cannot drive!'"],
-    ["", "Car.drive()", "error"],
-    ["", "Car.drive(deneros_car)", "'Cannot drive!'"]
+    ["", ">>> deneros_car.fill_gas()", "'Gas level: 20'"],
+    ["", ">>> Car.gas", "30"],
+    [">>> deneros_car = Car('Tesla', 'Model S')\n>>> deneros_car.wheels = 2", ">>> deneros_car.wheels", "2"],
+    ["", ">>> Car.num_wheels", "4"],
+    ["", ">>> deneros_car.drive()", "'Cannot drive!'"],
+    ["", ">>> Car.drive()", "error"],
+    ["", ">>> Car.drive(deneros_car)", "'Cannot drive!'"]
 ]
 classy_cars_qs = [[i + 1] + classy_cars_qs[i] + [False] for i in range(len(classy_cars_qs))]
 
@@ -199,5 +199,4 @@ def wwpd_student_oop():
     wwpd("Student OOP", student_oop_qs, st)
 
 def wwpd_classy_cars():
-    wwpd("Classy Cars", classy_cars_qs)
-
+    wwpd("Classy Cars", classy_cars_qs, st)
