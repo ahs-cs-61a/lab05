@@ -1,6 +1,6 @@
 # lab05 tests
 
-import labs.lab01 as lab
+import labs.lab05 as lab
 from io import StringIO 
 import sys
 
@@ -17,98 +17,70 @@ class Capturing(list):
         sys.stdout = self._stdout
 
 
-def test_falling():
-    assert lab.falling(6, 3) == 120
-    assert lab.falling(4, 3) == 24
-    assert lab.falling(4, 1) == 4
-    assert lab.falling(4, 0) == 1
+def test_keyboard():
+    b1 = lab.Button(0, "H")
+    b2 = lab.Button(1, "I")
+    k = lab.Keyboard(b1, b2)
+    assert k.buttons[0].ey == 'H'
+    assert k.press(2) == ''
+    assert k.typing([0, 1]) == 'HI'
+    assert k.typing([1, 0]) == 'IH'
+    assert b1.times_pressed == 2
+    assert b2.times_pressed == 3
 
 
-def test_sum_digits():
-    assert lab.sum_digits(10) == 1
-    assert lab.sum_digits(4224) == 12
-    assert lab.sum_digits(1234567890) == 45
+def test_minty_coin():
+    mint = lab.Minty()
+    assert mint.year == 2021
+    dime = mint.create('Dime')
+    assert dime.year == 2021
+    lab.Minty.present_year = 2101
+    nickel = mint.create('Nickel')
+    assert nickel.year == 2021
+    assert nickel.worth() == 35
+    mint.update() 
+    lab.Minty.present_year = 2176
+    assert mint.create('Dime').worth() == 35
+    assert lab.Minty.create('Dime').worth() == 10
+    assert dime.worth() == 115
 
 
-def test_double_eights():
-    assert lab.double_eights(8) == False
-    assert lab.double_eights(88) == True
-    assert lab.double_eights(2882) == True
-    assert lab.double_eights(880088) == True
-    assert lab.double_eights(12345) == False
-    assert lab.double_eights(80808080) == False
+def test_smart_fridge():
+    fridgey = lab.SmartFridge()
+    assert fridgey.add_item('Mayo', 1) == 'I now have 1 Mayo'
+    assert fridgey.add_item('Mayo', 2) == 'I now have 3 Mayo'
+    assert fridgey.use_item('Mayo', 2.5) == 'I have 0.5 Mayo left'
+    assert fridgey.use_item('Mayo', 0.5) == 'Oh no, we need more Mayo!'
+    assert fridgey.add_item('Eggs', 12) == 'I now have 12 Eggs'
+    assert fridgey.use_item('Eggs', 15) == 'Oh no, we need more Eggs!'
+    assert fridgey.add_item('Eggs', 1) == 'I now have 1 Eggs'
 
 
-def test_wears_jacket_with_if():
-    assert lab.wears_jacket_with_if(90, False) == False
-    assert lab.wears_jacket_with_if(40, False) == True
-    assert lab.wears_jacket_with_if(100, True) == True
+def test_vending_machine():
+    v = lab.VendingMachine('candy', 10)
+    assert v.vend() == 'Nothing left to vend. Please restock.'
+    assert v.add_funds(15) == 'Nothing left to vend. Please restock. Here is your $15.'
+    assert v.restock(2) == 'Current candy stock: 2'
+    assert v.vend() == 'Please update your balance with $10 more funds.'
+    assert v.add_funds(7) == 'Current balance: $7'
+    assert v.vend() == 'Please update your balance with $3 more funds.'
+    assert v.add_funds(5) == 'Current balance: $12'
+    assert v.vend() == 'Here is your candy and $2 change.'
+    assert v.add_funds(10) == 'Current balance: $10'
+    assert v.vend() == 'Here is your candy.'
+    assert v.add_funds(15) == 'Nothing left to vend. Please restock. Here is your $15.'
+
+    w = lab.VendingMachine('soda', 2)
+    assert w.restock(3) == 'Current soda stock: 3'
+    assert w.restock(3) == 'Current soda stock: 6'
+    assert w.add_funds(2) == 'Current balance: $2'
+    assert w.vend() == 'Here is your soda.'
 
 
-def test_is_prime():
-    assert lab.is_prime(10) == False
-    assert lab.is_prime(7) == True
-    assert lab.is_prime(1) == False
+# def test_cat():
+     
+# def test_noisy_cat():
 
+# def test_account():
 
-def test_fizzbuzz():
-    print("\n\nfizzbuzz(16) prints:")
-    with Capturing() as fizzbuzz_16_output:
-        lab.fizzbuzz(16)
-    fizzbuzz_16 = ['1', '2', 'fizz', '4', 'buzz', 'fizz', '7', '8', 'fizz', 'buzz', '11', 'fizz', '13', '14', 'fizzbuzz', '16']
-    for i in range(len(fizzbuzz_16)):
-        assert fizzbuzz_16[i] == fizzbuzz_16_output[i]
-    assert lab.fizzbuzz(16) is None # print, don't return
-
-
-def test_has_digit():
-    assert lab.has_digit(10, 1) == True
-    assert lab.has_digit(12, 7) == False
-    assert lab.has_digit(4, 4) == True
-
-
-def test_unique_digits():
-    assert lab.unique_digits(8675309) == 7
-    assert lab.unique_digits(1313131) == 2
-    assert lab.unique_digits(13173131) == 3
-    assert lab.unique_digits(10000) == 2
-    assert lab.unique_digits(101) == 2
-    assert lab.unique_digits(10) == 2
-
-
-def test_a_plus_abs_b():
-    assert lab.a_plus_abs_b(2, 3) == 5
-    assert lab.a_plus_abs_b(2, -3) == 5
-    assert lab.a_plus_abs_b(-1, -4) == 3
-    assert lab.a_plus_abs_b(-1, 4) == 3
-
-
-def test_two_of_three():
-    assert lab.two_of_three(1, 2, 3) == 5
-    assert lab.two_of_three(5, 3, 1) == 10
-    assert lab.two_of_three(10, 2, 8) == 68
-    assert lab.two_of_three(5, 5, 5) == 50
-
-
-def test_largest_factor():
-    assert lab.largest_factor(15) == 5
-    assert lab.largest_factor(80) == 40
-    assert lab.largest_factor(13) == 1
-
-
-def test_hailstone():
-    print("\n\nhailstone(10) prints:")
-    with Capturing() as hailstone_10_output:
-        lab.hailstone(10)
-    hailstone_10 = ['10', '5', '16', '8', '4', '2', '1']
-    for i in range(len(hailstone_10)):
-        assert hailstone_10[i] == hailstone_10_output[i] # incorrect prints
-    assert lab.hailstone(10) == 7
-    
-    print("\n\nhailstone(1) prints:")
-    with Capturing() as hailstone_1_output:
-        lab.hailstone(1)
-    hailstone_1 = ['1']
-    for i in range(len(hailstone_1)):
-        assert hailstone_1[i] == hailstone_1_output[i] # incorrect prints
-    assert lab.hailstone(1) == 1
+# def test_free_checking():

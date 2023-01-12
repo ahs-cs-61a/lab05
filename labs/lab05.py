@@ -33,26 +33,21 @@ class Keyboard: # q1
     3
     """
     def __init__(self, *args):
-        ________________
-        for _________ in ________________:
-            ________________
+        """YOUR CODE HERE"""
+
 
     def press(self, info):
         """Takes in a position of the button pressed, and
         returns that button's output."""
-        if ____________________:
-            ________________
-            ________________
-            ________________
-        ________________
+
+        """YOUR CODE HERE"""
+
 
     def typing(self, typing_input):
         """Takes in a list of positions of buttons pressed, and
         returns the total output."""
-        ________________
-        for ________ in ____________________:
-            ________________
-        ________________
+
+        """YOUR CODE HERE"""
 
 
 # lab04: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab04/
@@ -202,9 +197,24 @@ class Cat(Pet): # q5
         "*** YOUR CODE HERE ***"
 
 
+class _______: # q6
+    """A Cat that repeats things twice."""
+    def __init__(self, name, owner, lives=9):
+        # Is this method necessary? Why or why not?
+        "*** YOUR CODE HERE ***"
+
+    def talk(self):
+        """Talks twice as much as a regular cat.
+        >>> NoisyCat('Magic', 'James').talk()
+        Magic says meow!
+        Magic says meow!
+        """
+        "*** YOUR CODE HERE ***"
+
+
 # lab05: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab05/
 
-class Account:
+class Account: # q7
     """An account has a balance and a holder.
     >>> a = Account('John')
     >>> a.deposit(10)
@@ -247,7 +257,7 @@ class Account:
         "*** YOUR CODE HERE ***"
 
 
-class FreeChecking(Account): # q7
+class FreeChecking(Account): # q8
     """A bank account that charges for withdrawals, but the first two are free!
     >>> ch = FreeChecking('Jack')
     >>> ch.balance = 20

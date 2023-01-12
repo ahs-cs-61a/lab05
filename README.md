@@ -26,3 +26,14 @@ reminders:
 - for all tests: ```python3 -m pytest -s tests/test.py```
 - refer to lab00 setup description for help
 - don't forget to push to GitHub from Codespaces and submit turn-in in GradeScope
+
+test commands:
+  
+- test_keyboard
+- test_minty_coin
+- test_smart_fridge
+- test_vending_machine
+- test_cat
+- test_noisy_cat
+- test_account
+- test_free_checking
