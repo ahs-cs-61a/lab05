@@ -1,11 +1,19 @@
 # lab05 tests
 
+
+# IMPORTS
+
 import labs.lab05 as lab
+import tests.wwpd_storage as s
 from io import StringIO 
 import sys
+import git
+
+st = s.wwpd_storage
 
 
-# capturing prints (stdout)
+# CAPTURING PRINTS (STDOUT) - https://stackoverflow.com/questions/16571150/how-to-capture-stdout-output-from-a-python-function-call
+
 class Capturing(list):
     def __enter__(self):
         self._stdout = sys.stdout
@@ -16,6 +24,27 @@ class Capturing(list):
         del self._stringio
         sys.stdout = self._stdout
 
+
+# COLORED PRINTS - custom text type to terminal: https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal, ANSI colors: http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
+
+class bcolors:
+    HIGH_MAGENTA = '\u001b[45m'
+    HIGH_GREEN = '\u001b[42m'
+    HIGH_YELLOW = '\u001b[43m'
+    HIGH_RED = '\u001b[41m'
+    HIGH_BLUE = '\u001b[44m'
+    MAGENTA = ' \u001b[35m'
+    GREEN = '\u001b[32m'
+    YELLOW = '\u001b[33m'
+    RED = '\u001b[31m'
+    BLUE = '\u001b[34m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    RESET = '\u001b[0m'
+
+
+# TESTS
 
 def test_keyboard():
     b1 = lab.Button(0, "H")
@@ -77,10 +106,68 @@ def test_vending_machine():
     assert w.vend() == 'Here is your soda.'
 
 
-# def test_cat():
-     
-# def test_noisy_cat():
+def test_cat():
+    print("\n\nCat('Thomas', 'Tammy').talk() prints:")
+    with Capturing() as thomas_output:
+        lab.Cat('Thomas', 'Tammy').talk()  
+    thomas = "Thomas says meow!"
+    if thomas_output != thomas:
+        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Incorrect prints from Cat('Thomas', 'Tammy').talk()" + bcolors.ENDC)
 
-# def test_account():
 
-# def test_free_checking():
+def test_noisy_cat():
+    print("\n\nNoisyCat('Magic', 'James').talk() prints:")
+    with Capturing() as magic_output:
+        lab.NoisyCat('Magic', 'James').talk()
+    magic = "Magic says meow!\nMagic says meow!"
+    if magic_output != magic:
+        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Incorrect prints from NoisyCat('Magic', 'James').talk()" + bcolors.ENDC)
+
+
+def test_account():
+    a = lab.Account('John')
+    assert a.deposit(10) == 10
+    assert a.balance == 10
+    assert a.interest == 0.02
+    assert a.time_to_retire(10.25) == 2 
+    assert a.balance == 10
+    assert a.time_to_retire(11) == 5
+    assert a.time_to_retire(100) == 117
+
+
+def test_free_checking():
+    ch = lab.FreeChecking('Jack')
+    ch.balance = 20
+    assert ch.withdraw(100) == 'Insufficient funds'
+    assert ch.withdraw(3) == 17
+    assert ch.balance == 17
+    assert ch.withdraw(3) == 13
+    assert ch.withdraw(3) == 9
+    ch2 = lab.FreeChecking('John')
+    ch2.balance = 10
+    assert ch2.withdraw(3) == 7
+    assert ch.withdraw(3) == 5
+    assert ch.withdraw(5) == 'Insufficient funds'
+
+
+# CHECK WWPD? IS ALL COMPLETE
+
+def test_wwpd():
+    assert len(st) == 18
+
+
+# AUTO-COMMIT WHEN ALL TESTS ARE RAN
+
+def test_commit():
+    try:
+        # IF CHANGES ARE MADE, COMMIT TO GITHUB
+        user = input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n")
+        repo = git.Repo("/workspaces/lab01-" + user)
+        repo.git.add('--all')
+        repo.git.commit('-m', 'update lab')
+        origin = repo.remote(name='origin')
+        origin.push()
+        print(bcolors.HIGH_GREEN + bcolors.BOLD + "\nSUCCESS: Lab complete and changes successfully committed." + bcolors.ENDC)
+    except: 
+        # IF CHANGES ARE NOT MADE, NO COMMITS TO GITHUB
+        print(bcolors.HIGH_MAGENTA + bcolors.BOLD + "\nMESSAGE: Already up to date. No updates committed." + bcolors.ENDC)

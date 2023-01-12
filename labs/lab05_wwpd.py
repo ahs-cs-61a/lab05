@@ -179,7 +179,7 @@ student_oop_qs = [[i + 1] + student_oop_qs[i] + [False] for i in range(len(stude
 
 
 classy_cars_qs = [
-    [inspect.getsource(Car) + "\n\n>>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "'Model S'"],
+    ["\n" + inspect.getsource(Car) + "\n\n>>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "'Model S'"],
     [">>> deneros_car.gas = 10", ">>> deneros_car.drive()", "'Tesla Model S goes vroom!'"],
     ["", ">>> deneros_car.drive()", "'Cannot drive!'"],
     ["", ">>> deneros_car.fill_gas()", "'Gas level: 20'"],
