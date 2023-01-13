@@ -164,31 +164,29 @@ class Car:
 # INSPECT MODULE - convert function body into String: https://docs.python.org/3/library/inspect.html 
 
 student_oop_qs = [
-    ['>>> callahan = Professor("Callahan")', '>>> elle = Student("Elle", callahan)', "Added Elle"],
-    ["", ">>> elle.visit_office_hours(callahan)", "Thanks, Callahan"],
-    ["", '>>> elle.visit_office_hours(Professor("Paulette"))', "Thanks, Paulette"],
-    ["", ">>> elle.understanding", "2"],
-    ["", ">>> [name for name in callahan.students]", "['Elle']"],
-    ["", 'x = Student("Vivian", Professor("Stromwell")).name', "Added Vivian"],
-    ["", ">>> x", "'Vivian'"],
-    ["", ">>> elle.extension_days", "3"],
-    [">>> callahan.grant_more_extension_days(elle, 7)", ">>> elle.extension_days", "7"],
-    ["", ">>> Student.extension_days", "3"]
+    [1, '>>> callahan = Professor("Callahan")', '>>> elle = Student("Elle", callahan)', "Added Elle"],
+    [2, "", ">>> elle.visit_office_hours(callahan)", "Thanks, Callahan"],
+    [3, "", '>>> elle.visit_office_hours(Professor("Paulette"))', "Thanks, Paulette"],
+    [4, "", ">>> elle.understanding", "2"],
+    [5, "", ">>> [name for name in callahan.students]", "['Elle']"],
+    [6, "", 'x = Student("Vivian", Professor("Stromwell")).name', "Added Vivian"],
+    [7, "", ">>> x", "'Vivian'"],
+    [8, "", ">>> elle.extension_days", "3"],
+    [9, ">>> callahan.grant_more_extension_days(elle, 7)", ">>> elle.extension_days", "7"],
+    [10, "", ">>> Student.extension_days", "3"]
     ]
-student_oop_qs = [[i + 1] + student_oop_qs[i] + [False] for i in range(len(student_oop_qs))]
-
 
 classy_cars_qs = [
-    ["\n" + inspect.getsource(Car) + "\n\n>>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "'Model S'"],
-    [">>> deneros_car.gas = 10", ">>> deneros_car.drive()", "'Tesla Model S goes vroom!'"],
-    ["", ">>> deneros_car.drive()", "'Cannot drive!'"],
-    ["", ">>> deneros_car.fill_gas()", "'Gas level: 20'"],
-    ["", ">>> Car.gas", "30"],
-    [">>> deneros_car = Car('Tesla', 'Model S')\n>>> deneros_car.wheels = 2", ">>> deneros_car.wheels", "2"],
-    ["", ">>> Car.num_wheels", "4"],
-    ["", ">>> deneros_car.drive()", "'Cannot drive!'"],
-    ["", ">>> Car.drive()", "error"],
-    ["", ">>> Car.drive(deneros_car)", "'Cannot drive!'"]
+    [11, "\n" + inspect.getsource(Car) + "\n\n>>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "'Model S'"],
+    [12, ">>> deneros_car.gas = 10", ">>> deneros_car.drive()", "'Tesla Model S goes vroom!'"],
+    [13, "", ">>> deneros_car.drive()", "'Cannot drive!'"],
+    [14, "", ">>> deneros_car.fill_gas()", "'Gas level: 20'"],
+    [15, "", ">>> Car.gas", "30"],
+    [16, ">>> deneros_car = Car('Tesla', 'Model S')\n>>> deneros_car.wheels = 2", ">>> deneros_car.wheels", "2"],
+    [17, "", ">>> Car.num_wheels", "4"],
+    [18, "", ">>> deneros_car.drive()", "'Cannot drive!'"],
+    [19, "", ">>> Car.drive()", "error"],
+    [20, "", ">>> Car.drive(deneros_car)", "'Cannot drive!'"]
 ]
 classy_cars_qs = [[i + 1] + classy_cars_qs[i] + [False] for i in range(len(classy_cars_qs))]
 

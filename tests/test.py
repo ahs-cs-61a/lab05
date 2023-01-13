@@ -153,7 +153,7 @@ def test_free_checking():
 # CHECK WWPD? IS ALL COMPLETE
 
 def test_wwpd():
-    assert len(st) == 18
+    assert len(st) == 20
 
 
 # AUTO-COMMIT WHEN ALL TESTS ARE RAN
