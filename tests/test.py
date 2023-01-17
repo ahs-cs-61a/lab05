@@ -118,10 +118,10 @@ def test_cat():
     print("\n\nCat('Thomas', 'Tammy').talk() prints:")
     with Capturing() as thomas_output:
         lab.Cat('Thomas', 'Tammy').talk()  
-    thomas = "Thomas says meow!"
-    if thomas_output[0] != thomas:
+    thomas = ["Thomas says meow!"]
+    if thomas_output != thomas:
         print_error("Incorrect prints from Cat('Thomas', 'Tammy').talk()")
-    assert thomas_output[0] == thomas
+    assert thomas_output == thomas
 
 
 def test_noisy_cat():

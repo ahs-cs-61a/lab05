@@ -15,6 +15,9 @@ class bcolors:
     HIGH_MAGENTA = '\u001b[45m'
     HIGH_GREEN = '\u001b[42m'
     HIGH_YELLOW = '\u001b[43;1m'
+    MAGENTA = ' \u001b[35m'
+    GREEN = '\u001b[32m'
+    YELLOW = '\u001b[33;1m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
@@ -153,7 +156,7 @@ class Car:
 # INSPECT MODULE - convert function/class body into String: https://docs.python.org/3/library/inspect.html 
 
 student_oop_qs = [
-    [1, '>>> callahan = Professor("Callahan")', '>>> elle = Student("Elle", callahan)', "Added Elle"],
+    [1, inspect.getsource(Student) + "\n" + inspect.getsource(Professor) + '\n>>> callahan = Professor("Callahan")', '>>> elle = Student("Elle", callahan)', "Added Elle"],
     [2, "", ">>> elle.visit_office_hours(callahan)", "Thanks, Callahan"],
     [3, "", '>>> elle.visit_office_hours(Professor("Paulette"))', "Thanks, Paulette"],
     [4, "", ">>> elle.understanding", "2"],
@@ -166,7 +169,7 @@ student_oop_qs = [
     ]
 
 classy_cars_qs = [
-    [11, "\n" + inspect.getsource(Car) + "\n\n>>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "'Model S'"],
+    [11, "\n" + inspect.getsource(Car) + "\n>>> deneros_car = Car('Tesla', 'Model S')", ">>> deneros_car.model", "'Model S'"],
     [12, ">>> deneros_car.gas = 10", ">>> deneros_car.drive()", "'Tesla Model S goes vroom!'"],
     [13, "", ">>> deneros_car.drive()", "'Cannot drive!'"],
     [14, "", ">>> deneros_car.fill_gas()", "'Gas level: 20'"],
