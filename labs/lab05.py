@@ -52,7 +52,7 @@ class Keyboard: # q1
 
 # lab04: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab04/
 
-class Minty: 
+class Minty: # q2
     """A mint creates coins by stamping on years. The update method sets the mint's stamp to Minty.present_year.
     >>> mint = Minty()
     >>> mint.year
@@ -86,7 +86,7 @@ class Minty:
     def update(self):
         "*** YOUR CODE HERE ***"
 
-class Coin: # q2
+class Coin: 
     cents = 50
 
     def __init__(self, year, type):
