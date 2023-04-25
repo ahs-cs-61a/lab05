@@ -24,7 +24,7 @@ This assignment merges problems from disc05, disc06, lab04, lab05, and hw04 into
 - to run WWPD?: ```wwpd```
 - for individual tests: ```run_test <name of test>```
 - for all tests: ```test_all```
-- if you get an error "bash: command not found," run: ```source backround/.bashrc```
+- if you get an error "bash: command not found," run: ```source .bashrc```
 - refer to lab00 setup description for help
 - don't forget to push to GitHub from Codespaces and submit turn-in in on GradeScope
 
